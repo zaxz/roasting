@@ -29,7 +29,7 @@
         let output = document.getElementById("output");
 
         try {
-          const response = await fetch(`http://localhost:3000/roasting?nama=${nama}?desc=${desc}`, {
+          const response = await fetch(`https://roasting-api.vercel.app/roasting?nama=${nama}?desc=${desc}`, {
             method: "POST",
           });
           const text = await response.text();
