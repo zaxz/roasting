@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roast Yourself</title>
+  </head>
+  <body>
+    <div>
+      <h1>roast yourself 🔥</h1>
+      <h4>website under development !</h4>
+      <form id="form">
+        <label for="nama">masukkan nama mu</label><br>
+        <input id="nama" type="text" required><br><br>
+        <label for="desc">berikan deskripsi tentang dirimu</label><br>
+        <textarea name="desc" id="desc" cols="30" rows="5" placeholder="seperti hobi, makanan kesukaan, percintaan atau apapun lah terserah lu"></textarea><br>
+        <label for="desc" style="font-size: small;">*note : kelengkapan deskripsi akan mempengaruhi hasil roasting</label><br><br>
+        <button type="submit">ROASTING!</button>
+      </form>
+      <p id="output"></p>
+    </div>
+    <script type="text/javascript">
+
+      document.getElementById("form").addEventListener("submit", async function run(e) {
+        event.preventDefault();
+        let nama = document.getElementById("nama").value;
+        let desc = document.getElementById("desc").value;
+        
+        let output = document.getElementById("output");
+
+        try {
+          const response = await fetch(`http://localhost:3000/roasting?nama=${nama}?desc=${desc}`, {
+            method: "POST",
+          });
+          const text = await response.text();
+          output.innerHTML = `${text}`;
+          console.log(text);
+        } catch (error) {
+          console.error("Error:", error);
+          output.innerHTML = `${error}`;
+        }
+      })
+    </script>
+  </body>
+</html>
