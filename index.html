@@ -4,44 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roast Yourself</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <div>
-      <h1>roast yourself 🔥</h1>
-      <h4>website under development !</h4>
-      <form id="form">
-        <label for="nama">masukkan nama mu</label><br>
-        <input id="nama" type="text" required><br><br>
-        <label for="desc">berikan deskripsi tentang dirimu</label><br>
-        <textarea name="desc" id="desc" cols="30" rows="5" placeholder="seperti hobi, makanan kesukaan, percintaan atau apapun lah terserah lu"></textarea><br>
-        <label for="desc" style="font-size: small;">*note : kelengkapan deskripsi akan mempengaruhi hasil roasting</label><br><br>
-        dm gw kalo ngebug <a href="https://instagram.com/zaxz.dev">zaxz.dev</a>
-        <br><br>
-        <button type="submit">ROASTING!</button>
+    <marquee class="text-danger">ini cuma lucu2-an semata, jangan dimasukin kehati ya bang</marquee>
+    <div class="p-3">
+      <h1>Roast Yourself 🔥</h1>
+      <h6>website is under development !</h6>
+      <form id="form" class="pt-2">
+        <div class="d-flex flex-column">
+          <label for="nama">Masukkan nama mu</label>
+          <input id="nama" type="text" placeholder="udin" required />
+          <br />
+          <label for="desc">Berikan deskripsi tentang dirimu</label>
+          <label for="desc" class="small text-secondary">*note : kelengkapan deskripsi akan mempengaruhi hasil roasting</label>
+          <textarea name="desc" id="desc" cols="30" rows="5" placeholder="seperti hobi, makanan kesukaan, percintaan atau apapun lah terserah lu"></textarea>
+        </div>
+        <p>dm gw kalo ngebug <a href="https://instagram.com/zaxz.dev">zaxz.dev</a></p>
+        <button class="btn btn-danger fw-bold" type="submit">ROASTING!</button>
       </form>
+      <br />
+      <h5>Roasting Result :</h5>
       <p id="output"></p>
     </div>
-    <script type="text/javascript">
-
-      document.getElementById("form").addEventListener("submit", async function run(e) {
-        event.preventDefault();
-        let nama = document.getElementById("nama").value;
-        let desc = document.getElementById("desc").value;
-        
-        let output = document.getElementById("output");
-
-        try {
-          const response = await fetch(`https://roasting-api.vercel.app/roasting?nama=${nama}?desc=${desc}`, {
-            method: "POST",
-          });
-          const text = await response.text();
-          output.innerHTML = `${text}`;
-          console.log(text);
-        } catch (error) {
-          console.error("Error:", error);
-          output.innerHTML = `${error}`;
-        }
-      })
-    </script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
