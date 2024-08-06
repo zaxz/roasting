@@ -1,4 +1,4 @@
-document.getElementById("form").addEventListener("submit", async function run(e) {
+document.getElementById("form").addEventListener("submit", async function(e) {
     e.preventDefault();
     let nama = document.getElementById("nama").value;
     let desc = document.getElementById("desc").value;
